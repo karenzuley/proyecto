@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesion</title>
+</head>
+<body>
+    <input type="text" placeholder="Correo" id="correo">
+    <input type="password" placeholder="Contraseña" id="contraseña">
+    <button>Ingresar</button>
+    <script>
+        //simular dos usuarios de bases de datos
+        const usuarios = [
+            {
+                correo: "123@gmail.com",
+                contraseña: "123"
+            },
+            {
+                correo: "456@gmail.com",
+                contraseña: "456"
+            }
+        ];
+        //seleccionar el boton
+        const boton = document.querySelector("button");
+        //seleccionar los inputs
+        const correo = document.querySelector("#correo");
+        const contraseña = document.querySelector("#contraseña");
+        //funcion para validar los datos
+        const validar = () => {
+            //recorrer el array de usuarios
+            usuarios.forEach(usuario => {
+                //validar si el correo y la contraseña son iguales a los de la base de datos
+                if(usuario.correo === correo.value && usuario.contraseña === contraseña.value){
+                    //si son iguales, redireccionar a la pagina de inicio
+                    window.location.href = "inicio.html";
+                }
+            });
+            //si no son iguales, mostrar un mensaje de error
+            alert("Correo o contraseña incorrectos");
+        }
+        //evento click para el boton
+        boton.addEventListener("click", validar);
+    </script>
+    
+</body>
+</html>
